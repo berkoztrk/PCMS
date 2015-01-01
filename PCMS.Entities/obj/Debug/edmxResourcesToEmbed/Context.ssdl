@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PortalCustomer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="No" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalCustomerOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProvidersProductsId" Type="int" Nullable="false" />
+    <Property Name="DateBought" Type="smalldatetime" Nullable="false" />
+    <Property Name="Price" Type="smallmoney" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalErrorMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalPlatformType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Code" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ProductTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateCreated" Type="smalldatetime" />
+    <Property Name="DateUpdated" Type="smalldatetime" />
+    <Property Name="PictureURL" Type="nvarchar" MaxLength="2083" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PortalProductType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalProvider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalProvidersProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PlatformTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Price" Type="smallmoney" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortalUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="char" MaxLength="60" Nullable="false" />
+    <Property Name="DateLastLogin" Type="smalldatetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LoginCount" Type="int" Nullable="false" />
+    <Property Name="FailLoginAttempt" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK_PortalCustomerOrders_PortalCustomer">
+    <End Role="PortalCustomer" Type="Self.PortalCustomer" Multiplicity="1" />
+    <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalCustomer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalCustomerOrder">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortalCustomerOrders_PortalProvidersProducts">
+    <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="1" />
+    <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalProvidersProducts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalCustomerOrder">
+        <PropertyRef Name="ProvidersProductsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortalProduct_PortalProductType">
+    <End Role="PortalProductType" Type="Self.PortalProductType" Multiplicity="1" />
+    <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalProductType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalProduct">
+        <PropertyRef Name="ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortalProvidersProducts_PortalPlatformType">
+    <End Role="PortalPlatformType" Type="Self.PortalPlatformType" Multiplicity="1" />
+    <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalPlatformType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalProvidersProducts">
+        <PropertyRef Name="PlatformTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortalProvidersProducts_PortalProduct">
+    <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="1" />
+    <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalProvidersProducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortalProvidersProducts_PortalProvider">
+    <End Role="PortalProvider" Type="Self.PortalProvider" Multiplicity="1" />
+    <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PortalProvider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortalProvidersProducts">
+        <PropertyRef Name="ProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EntitiesStoreContainer">
+    <EntitySet Name="PortalCustomer" EntityType="Self.PortalCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalCustomerOrder" EntityType="Self.PortalCustomerOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalErrorMessage" EntityType="Self.PortalErrorMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalPlatformType" EntityType="Self.PortalPlatformType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalProduct" EntityType="Self.PortalProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalProductType" EntityType="Self.PortalProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalProvider" EntityType="Self.PortalProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalProvidersProducts" EntityType="Self.PortalProvidersProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortalUser" EntityType="Self.PortalUser" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PortalCustomerOrders_PortalCustomer" Association="Self.FK_PortalCustomerOrders_PortalCustomer">
+      <End Role="PortalCustomer" EntitySet="PortalCustomer" />
+      <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortalCustomerOrders_PortalProvidersProducts" Association="Self.FK_PortalCustomerOrders_PortalProvidersProducts">
+      <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+      <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortalProduct_PortalProductType" Association="Self.FK_PortalProduct_PortalProductType">
+      <End Role="PortalProductType" EntitySet="PortalProductType" />
+      <End Role="PortalProduct" EntitySet="PortalProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortalProvidersProducts_PortalPlatformType" Association="Self.FK_PortalProvidersProducts_PortalPlatformType">
+      <End Role="PortalPlatformType" EntitySet="PortalPlatformType" />
+      <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortalProvidersProducts_PortalProduct" Association="Self.FK_PortalProvidersProducts_PortalProduct">
+      <End Role="PortalProduct" EntitySet="PortalProduct" />
+      <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortalProvidersProducts_PortalProvider" Association="Self.FK_PortalProvidersProducts_PortalProvider">
+      <End Role="PortalProvider" EntitySet="PortalProvider" />
+      <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

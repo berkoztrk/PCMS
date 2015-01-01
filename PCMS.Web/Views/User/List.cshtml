@@ -1,0 +1,101 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/IndexLayout.cshtml";
+}
+
+<div id="table-list" style="width:100%">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#table-list').jtable({
+                title: 'Users',
+                sorting: true,
+                defaultSorting: 'Username ASC',
+                paging: true,
+                actions: {
+                    listAction: '/User/List',
+                    deleteAction: '/User/Delete',
+                    updateAction: '/User/Update',
+                    createAction: '/User/Create'
+                },
+                fields: {
+                    Id: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    Username: {
+                        title: 'Username',
+                        edit: true,
+                        create: true,
+                        list:true
+                    },
+                    Password: {
+                        title: 'Password',
+                        list: false,
+                        edit: true,
+                        create: true,
+                    },
+                    DateCreated: {
+                        title: 'Created At',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd',
+                        create: false
+                    },
+                    DateLastLogin: {
+                        title: 'Last Login',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd',
+                        create: false
+                    },
+                    IsActive: {
+                        title: 'Active',
+                        create: false,
+                        type: 'checkbox',
+                        values: { 'false': 'Passive', 'true': 'Active' },
+                    },
+                    LoginCount: {
+                        title: 'Login Count',
+                        create: false
+                    },
+                    FailLoginAttempt: {
+                        title: 'Fail Login Attempt',
+                        create: false,
+                    }
+                },
+                formCreated: function (e, data) {
+
+                    //initializations
+                    if (data.formType == 'edit') {
+                        $(".jtable-input-field-container").has('#Edit-Password').css('display', 'none');
+                        $(".jtable-input-field-container").has('#Edit-DateCreated').css('display', 'none');
+                        $(".jtable-input-field-container").has('#Edit-DateLastLogin').css('display', 'none');
+                    }
+
+                    //validations
+                    data.form.find('input[name="Username"]').addClass('validate[required,maxSize[20],minSize[4]]');
+                    data.form.find('input[name="IsActive"]').addClass('validate[required]');
+                    data.form.find('input[name="LoginCount"]').addClass('validate[required,custom[onlyNumberSp]]');
+                    data.form.find('input[name="FailLoginAttempt"]').addClass('validate[required,custom[onlyNumberSp]]');
+                    data.form.find('input[name="Password"]').addClass('validate[required,custom[onlyLetterNumber],minSize[6],maxSize[60]]');
+
+                    data.form.validationEngine();
+                },
+                formSubmitting: function (event, data) {
+                    return data.form.validationEngine('validate');
+                },
+                formClosed: function (event, data) {
+                    data.form.validationEngine('hide');
+                    data.form.validationEngine('detach');
+                }
+                
+            });
+
+            $('#table-list').jtable('load');
+        });
+
+    </script>
+</div>

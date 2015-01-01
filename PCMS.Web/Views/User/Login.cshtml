@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div id="login-panel-container">
+    <div id="login-panel-left">
+        <span class="cms-icon">CMS</span>
+    </div>
+    <div id="login-panel-right">
+        @using (Ajax.BeginForm("Login", new AjaxOptions() { HttpMethod = "POST", LoadingElementId = "loader", UpdateTargetId = "login-fail", InsertionMode = InsertionMode.Replace }))
+        {
+            <div id="login-input-content">
+                <h2>Login</h2>
+                <div class="inner-addon left-addon">
+                    <i class="fa fa-user glyphicon glyphicon-user"></i>
+                    @Html.TextBox("username", "", new { placeholder = "Username" })
+                </div>
+                <div class="inner-addon left-addon">
+                    <i class="fa fa-key glyphicon glyphicon-user"></i>
+                    @Html.Password("password", "", new { placeholder = "Password" })
+                </div>
+                <div id="login-fail" style="height:30px;color:red;"></div>
+            </div>
+            <div id="login-footer">
+                <input type="submit" value="Login" />
+            </div>
+        }
+
+    </div>
+</div>

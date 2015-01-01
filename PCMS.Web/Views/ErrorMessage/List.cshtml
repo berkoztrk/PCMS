@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/IndexLayout.cshtml";
+}
+
+@*<script src="~/Scripts/jquery-ui-1.11.2.custom/external/jquery/jquery.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
+<script src="~/Scripts/jtable.2.4.0/jquery.jtable.js"></script>
+<link href="~/Scripts/jtable.2.4.0/themes/metro/blue/jtable.css" rel="stylesheet" />*@
+
+<div id="table-list" style="width:100%">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#table-list').jtable({
+                title: 'Error Messages',
+                sorting: true,
+                defaultSorting: 'Title ASC',
+                paging: true,
+                actions: {
+                    listAction: '/ErrorMessage/List',
+                    deleteAction: '/ErrorMessage/Delete',
+                    updateAction: '/ErrorMessage/Update',
+                    createAction: '/ErrorMessage/Create'
+                },
+                fields: {
+                    Id: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list:false
+                    },
+                    Title: {
+                        title: 'Title',
+                    },
+                    Message: {
+                        title: 'Message',
+                        type: 'textarea'
+                    }
+                },
+                formCreated: function (e, data) {
+                    data.form.find('input[name="Title"]').addClass('validate[required],maxSize[255]');
+                    data.form.find('textarea[name="Message"]').addClass('validate[required]');
+                    data.form.validationEngine();
+                },
+                formSubmitting: function (event, data) {
+                    return data.form.validationEngine('validate');
+                },
+                formClosed: function (event, data) {
+                    data.form.validationEngine('hide');
+                    data.form.validationEngine('detach');
+                }
+            });
+
+            $('#table-list').jtable('load');
+        });
+
+    </script>
+</div>
+

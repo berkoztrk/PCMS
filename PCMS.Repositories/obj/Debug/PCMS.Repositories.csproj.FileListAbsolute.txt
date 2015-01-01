@@ -1,0 +1,14 @@
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\bin\Debug\PCMS.Repositories.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\bin\Debug\PCMS.Repositories.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\bin\Debug\PCMS.Entities.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\bin\Debug\PCMS.Entities.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.csprojResolveAssemblyReference.cache
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\bin\Debug\PCMS.Repositories.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\bin\Debug\PCMS.Repositories.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\bin\Debug\PCMS.Entities.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\bin\Debug\PCMS.Entities.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.csprojResolveAssemblyReference.cache
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Repositories\obj\Debug\PCMS.Repositories.pdb

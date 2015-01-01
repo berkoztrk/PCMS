@@ -1,0 +1,10 @@
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Utility\bin\Debug\PCMS.Utility.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Utility\bin\Debug\PCMS.Utility.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.csprojResolveAssemblyReference.cache
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Utility\bin\Debug\PCMS.Utility.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Utility\bin\Debug\PCMS.Utility.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Utility\obj\Debug\PCMS.Utility.csprojResolveAssemblyReference.cache

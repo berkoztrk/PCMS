@@ -1,0 +1,77 @@
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Web.dll.config
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Web.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Web.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\Newtonsoft.Json.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Entities.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Repositories.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Services.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Utility.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Helpers.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Http.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Mvc.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Razor.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\EntityFramework.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Entities.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Repositories.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Services.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\PCMS.Utility.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\Newtonsoft.Json.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Helpers.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Http.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Mvc.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.Razor.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\bin\EntityFramework.xml
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\obj\Debug\PCMS.Web.csprojResolveAssemblyReference.cache
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\obj\Debug\PCMS.Web.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Web\obj\Debug\PCMS.Web.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Web.dll.config
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Web.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Web.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\Newtonsoft.Json.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Entities.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Repositories.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Services.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Utility.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Helpers.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Http.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Mvc.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Razor.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\EntityFramework.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Linq.Dynamic.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Entities.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Repositories.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Services.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\PCMS.Utility.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\Newtonsoft.Json.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Helpers.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Http.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Mvc.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.Razor.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\bin\EntityFramework.xml
+C:\Users\berk\Desktop\PCMS\PCMS.Web\obj\Debug\PCMS.Web.csprojResolveAssemblyReference.cache
+C:\Users\berk\Desktop\PCMS\PCMS.Web\obj\Debug\PCMS.Web.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Web\obj\Debug\PCMS.Web.pdb

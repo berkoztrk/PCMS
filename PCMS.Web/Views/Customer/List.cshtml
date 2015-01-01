@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/IndexLayout.cshtml";
+}
+
+
+<div id="table-list" style="width:100%">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#table-list').jtable({
+                title: 'Customers',
+                sorting: true,
+                defaultSorting: 'FullName ASC',
+                paging: true,
+                actions: {
+                    listAction: '/Customer/List',
+                    deleteAction: '/Customer/Delete',
+                    updateAction: '/Customer/Update',
+                    createAction: '/Customer/Create'
+                },
+                fields: {
+                    Id: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    FullName: {
+                        title: 'Full Name',
+                    },
+                    No: {
+                        title: 'Customer No',
+                    }
+
+                },
+                formCreated: function (e, data) {
+                    //initializations
+                    //$("input[name='No']").attr('maxlength', 10);
+                    //Validations
+                    data.form.find('input[name="FullName"]').addClass('validate[required],maxSize[255]');
+                    data.form.find('input[name="No"]').addClass('validate[required],maxSize[10]');
+                    data.form.validationEngine();
+                },
+                formSubmitting: function (event, data) {
+                    return data.form.validationEngine('validate');
+                },
+                formClosed: function (event, data) {
+                    data.form.validationEngine('hide');
+                    data.form.validationEngine('detach');
+                }
+            });
+
+            $('#table-list').jtable('load');
+        });
+
+    </script>
+</div>
+

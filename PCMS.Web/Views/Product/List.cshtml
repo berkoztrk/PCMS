@@ -1,0 +1,149 @@
+﻿@model IEnumerable<PCMS.Entities.PortalProduct>
+@using PCMS.Web.Helpers
+
+@{
+    Layout = "~/Views/Shared/IndexLayout.cshtml";
+}
+
+<div id="table-list" style="width:100%">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#table-list').jtable({
+                title: 'Products',
+                sorting: true,
+                defaultSorting: 'Name ASC',
+                paging: true,
+                width: '100%',
+                actions: {
+                    listAction: '/Product/List',
+                    deleteAction: '/Product/Delete',
+                    updateAction: function (data) {
+                        var deferred = $.Deferred();
+
+                        $("#postiframe").load(function () {
+                            iframeContents = $("#postiframe").contents().find("body").text();
+                            var result = $.parseJSON(iframeContents);
+                            deferred.resolve(result);
+                        });
+
+                        var form = $('#jtable-edit-form');
+                        form.unbind("submit");
+                        form.attr("action", "/Product/UpdateWithFile");
+                        form.attr("method", "post");
+                        form.attr("enctype", "multipart/form-data");
+                        form.attr("encoding", "multipart/form-data");
+                        form.attr("target", "postiframe");
+                        form.submit();
+
+                        return deferred;
+                    },
+                    createAction: function (data) {
+                        var deferred = $.Deferred();
+
+
+                        $("#postiframe").load(function () {
+                            iframeContents = $("#postiframe").contents().find("body").text();
+                            var result = $.parseJSON(iframeContents);
+                            deferred.resolve(result);
+                        });
+
+                        var form = $('#jtable-create-form');
+                        form.unbind("submit");
+                        form.attr("action", "/Product/CreateWithFile");
+                        form.attr("method", "post");
+                        form.attr("enctype", "multipart/form-data");
+                        form.attr("encoding", "multipart/form-data");
+                        form.attr("target", "postiframe");
+                        form.submit();
+
+                        return deferred;
+                    }
+                },
+                fields: {
+                    Id: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false,
+                        type: 'hidden'
+                    },
+                    PictureURL: {
+                        title: 'Image',
+                        list: true,
+                        create: true,
+                        edit: true,
+                        sorting: false,
+                        defaultValue: function (data) {
+                            return data.record.PictureURL;
+                        },
+                        listClass: 'td-align-center',
+                        input: function (data) {
+                            return '<input id="docBytes" type="file" name="file" /><iframe name="postiframe" id="postiframe" style="display: none" />';
+                        },
+                        display: function (data) {
+                            if (data.record.PictureURL)
+                                return "<img src='" + data.record.PictureURL + "' width='50'/>"
+                        }
+                    },
+                    Name: {
+                        title: 'Name',
+                        width: '15%'
+                    },
+                    Code: {
+                        title: 'Code',
+                        width: '15%'
+                    },
+                    ProductTypeId: {
+                        title: 'Product Type',
+                        options: '/Product/GetTypeOptions',
+                        width: '15%'
+                    },
+                    DateCreated: {
+                        title: 'Created At',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd',
+                        create: false,
+                        width: '15%'
+                    },
+                    DateUpdated: {
+                        title: 'Updated At',
+                        create: false,
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd',
+                        width: '15%'
+                    },
+                    Description: {
+                        title: 'Description',
+                        type: 'textarea',
+                        list: false
+                    }
+                },
+                formCreated: function (e, data) {
+                    // initializations
+                    $(".jtable-input-field-container").has('#Edit-DateCreated').css('display', 'none');
+                    $(".jtable-input-field-container").has('#Edit-DateUpdated').css('display', 'none');
+                    //validations
+                    data.form.find('input[name="file"]').addClass('validate[custom[validateMIME[image/jpeg|image/png]]]');
+                    data.form.find('input[name="Name"]').addClass('validate[required,maxSize[255]]');
+                    data.form.find('input[name="Code"]').addClass('validate[required,maxSize[10]]');
+                    data.form.find('textarea[name="Description"]').addClass('validate[required]');
+                    data.form.find('input[name="ProductTypeId"]').addClass('validate[required]');
+
+                    data.form.validationEngine();
+                },
+                formSubmitting: function (event, data) {
+                    return data.form.validationEngine('validate');
+                },
+                formClosed: function (event, data) {
+                    data.form.validationEngine('hide');
+                    data.form.validationEngine('detach');
+                }
+            });
+
+            $('#table-list').jtable('load');
+        });
+
+    </script>
+</div>

@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "List.cshtml";
+    Layout = "~/Views/Shared/IndexLayout.cshtml";
+}
+
+<div id="table-list" style="width:100%">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $('#table-list').jtable({
+                title: 'Provider Options',
+                sorting: true,
+                useBootstrap: true,
+                defaultSorting: 'Name ASC',
+                paging: true,
+                actions: {
+                    listAction: '/ProductsWithProviders/List',
+                },
+                fields: {
+                    Id: {
+                        title: 'Id',
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    ListColumn: {
+                        sorting: false,
+                        width: '4%',
+                        listClass: 'td-contains-icon',
+                        display: function (providerData) {
+                            var $img = $("<div class='td-list-icon'><i class='fa fa-list'></i></div>");
+                            $img.click(function () {
+                                $('#table-list').jtable('openChildTable',
+                                    $img.closest('tr'),
+                                    {
+                                        title: providerData.record.Name + ' - Products',
+                                        sorting: true,
+                                        defaultSorting: 'ProductName ASC',
+                                        paging: true,
+                                        actions: {
+                                            createAction: '/ProductsWithProviders/Create',
+                                            listAction: '/ProductsWithProviders/GetProductsByProviderID?ProviderId=' +
+                                                        providerData.record.Id,
+                                            deleteAction: '/ProductsWithProviders/Delete',
+                                            updateAction: '/ProductsWithProviders/Update',
+                                        },
+                                        fields: {
+                                            Id: {
+                                                key: true,
+                                                list: false,
+                                                edit: true,
+                                                create: false,
+                                            },
+                                            ProviderId: {
+                                                visibility: 'hidden',
+                                                defaultValue: providerData.record.Id,
+                                                create: true,
+                                                list: false,
+                                                edit: true,
+                                            },
+                                            ProductId: {
+                                                title: 'Name',
+                                                width: '30%',
+                                                type: 'dropdown',
+                                                options: '/Product/GetProductOptions'
+                                            },
+                                            ProductName: {
+                                                type: 'hidden'
+                                            },
+                                            ProductCode: {
+                                                title: 'Code',
+                                                width: '30%',
+                                                edit: false,
+                                                create: false,
+
+                                            },
+                                            PlatformTypeId: {
+                                                title: 'Platform',
+                                                width: '30%',
+                                                type: 'dropdown',
+                                                options: '/PlatformType/GetPlatformOptions'
+                                            },
+                                            Price: {
+                                                title: 'Price',
+                                                width: '30%',
+                                                display: function (data) {
+                                                    return '<span>' + data.record.Price + 'TL</span>';
+                                                }
+                                            },
+                                        },
+                                        formCreated: function (e, data) {
+                                            //initializations
+                                            $(".jtable-input-field-container").has('#Edit-Id').css('display', 'none');
+                                            $(".jtable-input-field-container").has('#Edit-ProviderId').css('display', 'none');
+                                            //validations
+                                           
+                                            data.form.find('input[name="ProductId"]').addClass('validate[required]');
+                                            data.form.find('input[name="PlatformTypeId"]').addClass('validate[required]');
+                                            data.form.find('input[name="Price"]').addClass('validate[required,custom[number]]');
+                                            data.form.validationEngine();
+                                        },
+
+                                        formSubmitting: function (event, data) {
+                                            return data.form.validationEngine('validate');
+                                        },
+                                        formClosed: function (event, data) {
+                                            data.form.validationEngine('hide');
+                                            data.form.validationEngine('detach');
+                                        }
+
+                                    }, function (data) {
+                                        data.childTable.jtable('load');
+                                    });
+                            });
+                            return $img;
+                        },
+                    },
+                    Name: {
+                        title: 'Provider Name',
+                        listClass: 'td-parent',
+                        width: '95%'
+                    },
+                }
+            });
+
+            $('#table-list').jtable('load');
+        });
+
+    </script>
+</div>

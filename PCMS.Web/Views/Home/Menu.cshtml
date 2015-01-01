@@ -1,0 +1,7 @@
+﻿@using PCMS.Entities
+@model IEnumerable<PortalSiteMenu>
+
+@foreach (var item in Model)
+{
+    @Html.Raw(item.HtmlContent)
+}

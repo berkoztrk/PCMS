@@ -1,0 +1,22 @@
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Services.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Services.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Entities.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Repositories.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Utility.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Entities.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Repositories.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\bin\Debug\PCMS.Utility.pdb
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\obj\Debug\PCMS.Services.csprojResolveAssemblyReference.cache
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\obj\Debug\PCMS.Services.dll
+C:\Users\berk\documents\visual studio 2013\Projects\PCMS\PCMS.Services\obj\Debug\PCMS.Services.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Services.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Services.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Entities.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Repositories.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Utility.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Entities.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Repositories.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Services\bin\Debug\PCMS.Utility.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Services\obj\Debug\PCMS.Services.csprojResolveAssemblyReference.cache
+C:\Users\berk\Desktop\PCMS\PCMS.Services\obj\Debug\PCMS.Services.dll
+C:\Users\berk\Desktop\PCMS\PCMS.Services\obj\Debug\PCMS.Services.pdb

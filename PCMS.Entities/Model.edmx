@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PortalCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="No" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalCustomerOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProvidersProductsId" Type="int" Nullable="false" />
+          <Property Name="DateBought" Type="smalldatetime" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalErrorMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalPlatformType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ProductTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+          <Property Name="DateUpdated" Type="smalldatetime" />
+          <Property Name="PictureURL" Type="nvarchar" MaxLength="2083" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PortalProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalProvider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalProvidersProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PlatformTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalSiteMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" />
+          <Property Name="HtmlContent" Type="varchar(max)" />
+          <Property Name="SortingOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="PortalUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="char" MaxLength="60" Nullable="false" />
+          <Property Name="DateLastLogin" Type="smalldatetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LoginCount" Type="int" Nullable="false" />
+          <Property Name="FailLoginAttempt" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+        </EntityType>
+        <Association Name="FK_PortalCustomerOrders_PortalCustomer">
+          <End Role="PortalCustomer" Type="Self.PortalCustomer" Multiplicity="1" />
+          <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalCustomerOrder">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalCustomerOrders_PortalProvidersProducts">
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="1" />
+          <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProvidersProducts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalCustomerOrder">
+              <PropertyRef Name="ProvidersProductsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProduct_PortalProductType">
+          <End Role="PortalProductType" Type="Self.PortalProductType" Multiplicity="1" />
+          <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProduct">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalPlatformType">
+          <End Role="PortalPlatformType" Type="Self.PortalPlatformType" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalPlatformType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="PlatformTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalProduct">
+          <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalProvider">
+          <End Role="PortalProvider" Type="Self.PortalProvider" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProvider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="PortalCustomer" EntityType="Self.PortalCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalCustomerOrder" EntityType="Self.PortalCustomerOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalErrorMessage" EntityType="Self.PortalErrorMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalPlatformType" EntityType="Self.PortalPlatformType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalProduct" EntityType="Self.PortalProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalProductType" EntityType="Self.PortalProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalProvider" EntityType="Self.PortalProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalProvidersProducts" EntityType="Self.PortalProvidersProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalSiteMenu" EntityType="Self.PortalSiteMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PortalUser" EntityType="Self.PortalUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PortalCustomerOrders_PortalCustomer" Association="Self.FK_PortalCustomerOrders_PortalCustomer">
+            <End Role="PortalCustomer" EntitySet="PortalCustomer" />
+            <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalCustomerOrders_PortalProvidersProducts" Association="Self.FK_PortalCustomerOrders_PortalProvidersProducts">
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+            <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProduct_PortalProductType" Association="Self.FK_PortalProduct_PortalProductType">
+            <End Role="PortalProductType" EntitySet="PortalProductType" />
+            <End Role="PortalProduct" EntitySet="PortalProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalPlatformType" Association="Self.FK_PortalProvidersProducts_PortalPlatformType">
+            <End Role="PortalPlatformType" EntitySet="PortalPlatformType" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalProduct" Association="Self.FK_PortalProvidersProducts_PortalProduct">
+            <End Role="PortalProduct" EntitySet="PortalProduct" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalProvider" Association="Self.FK_PortalProvidersProducts_PortalProvider">
+            <End Role="PortalProvider" EntitySet="PortalProvider" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PortalCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PortalCustomerOrders" Relationship="Self.FK_PortalCustomerOrders_PortalCustomer" FromRole="PortalCustomer" ToRole="PortalCustomerOrder" />
+        </EntityType>
+        <EntityType Name="PortalCustomerOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Guid" Nullable="false" />
+          <Property Name="ProvidersProductsId" Type="Int32" Nullable="false" />
+          <Property Name="DateBought" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <NavigationProperty Name="PortalCustomer" Relationship="Self.FK_PortalCustomerOrders_PortalCustomer" FromRole="PortalCustomerOrder" ToRole="PortalCustomer" />
+          <NavigationProperty Name="PortalProvidersProduct" Relationship="Self.FK_PortalCustomerOrders_PortalProvidersProducts" FromRole="PortalCustomerOrder" ToRole="PortalProvidersProducts" />
+        </EntityType>
+        <EntityType Name="PortalErrorMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PortalPlatformType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PortalProvidersProducts" Relationship="Self.FK_PortalProvidersProducts_PortalPlatformType" FromRole="PortalPlatformType" ToRole="PortalProvidersProducts" />
+        </EntityType>
+        <EntityType Name="PortalProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ProductTypeId" Type="Guid" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="0" />
+          <Property Name="PictureURL" Type="String" MaxLength="2083" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PortalProductType" Relationship="Self.FK_PortalProduct_PortalProductType" FromRole="PortalProduct" ToRole="PortalProductType" />
+          <NavigationProperty Name="PortalProvidersProducts" Relationship="Self.FK_PortalProvidersProducts_PortalProduct" FromRole="PortalProduct" ToRole="PortalProvidersProducts" />
+        </EntityType>
+        <EntityType Name="PortalProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PortalProducts" Relationship="Self.FK_PortalProduct_PortalProductType" FromRole="PortalProductType" ToRole="PortalProduct" />
+        </EntityType>
+        <EntityType Name="PortalProvider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PortalProvidersProducts" Relationship="Self.FK_PortalProvidersProducts_PortalProvider" FromRole="PortalProvider" ToRole="PortalProvidersProducts" />
+        </EntityType>
+        <EntityType Name="PortalProvidersProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderId" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="PlatformTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <NavigationProperty Name="PortalCustomerOrders" Relationship="Self.FK_PortalCustomerOrders_PortalProvidersProducts" FromRole="PortalProvidersProducts" ToRole="PortalCustomerOrder" />
+          <NavigationProperty Name="PortalPlatformType" Relationship="Self.FK_PortalProvidersProducts_PortalPlatformType" FromRole="PortalProvidersProducts" ToRole="PortalPlatformType" />
+          <NavigationProperty Name="PortalProduct" Relationship="Self.FK_PortalProvidersProducts_PortalProduct" FromRole="PortalProvidersProducts" ToRole="PortalProduct" />
+          <NavigationProperty Name="PortalProvider" Relationship="Self.FK_PortalProvidersProducts_PortalProvider" FromRole="PortalProvidersProducts" ToRole="PortalProvider" />
+        </EntityType>
+        <EntityType Name="PortalUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="60" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateLastLogin" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LoginCount" Type="Int32" Nullable="false" />
+          <Property Name="FailLoginAttempt" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_PortalCustomerOrders_PortalCustomer">
+          <End Role="PortalCustomer" Type="Self.PortalCustomer" Multiplicity="1" />
+          <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalCustomerOrder">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalCustomerOrders_PortalProvidersProducts">
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProduct" Multiplicity="1" />
+          <End Role="PortalCustomerOrder" Type="Self.PortalCustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProvidersProducts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalCustomerOrder">
+              <PropertyRef Name="ProvidersProductsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalPlatformType">
+          <End Role="PortalPlatformType" Type="Self.PortalPlatformType" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalPlatformType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="PlatformTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProduct_PortalProductType">
+          <End Role="PortalProductType" Type="Self.PortalProductType" Multiplicity="1" />
+          <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProduct">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalProduct">
+          <End Role="PortalProduct" Type="Self.PortalProduct" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalProvidersProducts_PortalProvider">
+          <End Role="PortalProvider" Type="Self.PortalProvider" Multiplicity="1" />
+          <End Role="PortalProvidersProducts" Type="Self.PortalProvidersProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PortalProvider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PortalProvidersProducts">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PortalCustomers" EntityType="Self.PortalCustomer" />
+          <EntitySet Name="PortalCustomerOrders" EntityType="Self.PortalCustomerOrder" />
+          <EntitySet Name="PortalErrorMessages" EntityType="Self.PortalErrorMessage" />
+          <EntitySet Name="PortalPlatformTypes" EntityType="Self.PortalPlatformType" />
+          <EntitySet Name="PortalProducts" EntityType="Self.PortalProduct" />
+          <EntitySet Name="PortalProductTypes" EntityType="Self.PortalProductType" />
+          <EntitySet Name="PortalProviders" EntityType="Self.PortalProvider" />
+          <EntitySet Name="PortalProvidersProducts" EntityType="Self.PortalProvidersProduct" />
+          <EntitySet Name="PortalUsers" EntityType="Self.PortalUser" />
+          <AssociationSet Name="FK_PortalCustomerOrders_PortalCustomer" Association="Self.FK_PortalCustomerOrders_PortalCustomer">
+            <End Role="PortalCustomer" EntitySet="PortalCustomers" />
+            <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalCustomerOrders_PortalProvidersProducts" Association="Self.FK_PortalCustomerOrders_PortalProvidersProducts">
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+            <End Role="PortalCustomerOrder" EntitySet="PortalCustomerOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalPlatformType" Association="Self.FK_PortalProvidersProducts_PortalPlatformType">
+            <End Role="PortalPlatformType" EntitySet="PortalPlatformTypes" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProduct_PortalProductType" Association="Self.FK_PortalProduct_PortalProductType">
+            <End Role="PortalProductType" EntitySet="PortalProductTypes" />
+            <End Role="PortalProduct" EntitySet="PortalProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalProduct" Association="Self.FK_PortalProvidersProducts_PortalProduct">
+            <End Role="PortalProduct" EntitySet="PortalProducts" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalProvidersProducts_PortalProvider" Association="Self.FK_PortalProvidersProducts_PortalProvider">
+            <End Role="PortalProvider" EntitySet="PortalProviders" />
+            <End Role="PortalProvidersProducts" EntitySet="PortalProvidersProducts" />
+          </AssociationSet>
+          <EntitySet Name="PortalSiteMenus" EntityType="Model.PortalSiteMenu" />
+        </EntityContainer>
+        <EntityType Name="PortalSiteMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HtmlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortingOrder" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CMSEntities">
+          <EntitySetMapping Name="PortalCustomers">
+            <EntityTypeMapping TypeName="Model.PortalCustomer">
+              <MappingFragment StoreEntitySet="PortalCustomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalCustomerOrders">
+            <EntityTypeMapping TypeName="Model.PortalCustomerOrder">
+              <MappingFragment StoreEntitySet="PortalCustomerOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProvidersProductsId" ColumnName="ProvidersProductsId" />
+                <ScalarProperty Name="DateBought" ColumnName="DateBought" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalErrorMessages">
+            <EntityTypeMapping TypeName="Model.PortalErrorMessage">
+              <MappingFragment StoreEntitySet="PortalErrorMessage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalPlatformTypes">
+            <EntityTypeMapping TypeName="Model.PortalPlatformType">
+              <MappingFragment StoreEntitySet="PortalPlatformType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalProducts">
+            <EntityTypeMapping TypeName="Model.PortalProduct">
+              <MappingFragment StoreEntitySet="PortalProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="PictureURL" ColumnName="PictureURL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalProductTypes">
+            <EntityTypeMapping TypeName="Model.PortalProductType">
+              <MappingFragment StoreEntitySet="PortalProductType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalProviders">
+            <EntityTypeMapping TypeName="Model.PortalProvider">
+              <MappingFragment StoreEntitySet="PortalProvider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalProvidersProducts">
+            <EntityTypeMapping TypeName="Model.PortalProvidersProduct">
+              <MappingFragment StoreEntitySet="PortalProvidersProducts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PlatformTypeId" ColumnName="PlatformTypeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalUsers">
+            <EntityTypeMapping TypeName="Model.PortalUser">
+              <MappingFragment StoreEntitySet="PortalUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DateLastLogin" ColumnName="DateLastLogin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="FailLoginAttempt" ColumnName="FailLoginAttempt" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalSiteMenus">
+            <EntityTypeMapping TypeName="Model.PortalSiteMenu">
+              <MappingFragment StoreEntitySet="PortalSiteMenu">
+                <ScalarProperty Name="SortingOrder" ColumnName="SortingOrder" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

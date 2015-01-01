@@ -1,0 +1,319 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight:400;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+    ul li {
+        list-style: none;
+    }
+
+select {
+    font-family: inherit;
+}
+
+#index-page-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#index-top-menu {
+    background-color: #454545;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
+
+#user-data {
+    color: #fff;
+    margin-top: 20px;
+    width: auto;
+    float: right;
+    padding: 5px;
+    display: table;
+    border-spacing: 10px 0px;
+}
+
+#username {
+    display: table-cell;
+    font-size: 10px;
+}
+
+#logout {
+    display: table-cell;
+    padding: 0px 5px;
+}
+
+#index-bottom {
+    position: absolute;
+    left: 0;
+    display: table;
+    right: 0;
+    height: 100vh;
+    top: 60px;
+    bottom: 0px;
+}
+
+#index-left-container {
+    display: table-cell;
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    border-right: 1px #DFDFDF solid;
+    background-color: #F2F2EA;
+    border-top: 5px #DDD solid;
+    vertical-align: top;
+}
+
+    #index-left-container ul li a:visited, #index-left-container ul li a:link {
+        color: #949494;
+    }
+
+    #index-left-container ul li:hover, #index-left-container ul li:hover a {
+        background-color: #009FE4;
+        color: #fff;
+    }
+
+    #index-left-container ul li a #list-container {
+        display: table;
+        border-bottom: 1px #DFDFDF solid;
+        border-right: 1px #DFDFDF solid;
+        display: table;
+        width: 200px;
+        line-height: 2em;
+    }
+
+    #index-left-container ul li a .list-icon {
+        width: 30px;
+        text-align: center;
+        padding: 8px 5px;
+        border-right: 1px #DFDFDF solid;
+        background: #009FE4;
+        color: #fff;
+    }
+
+    #index-left-container ul li a .list-text {
+        width: 150px;
+        font-size: 12px;
+        padding-left: 10px;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+#index-right-container {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: #FCFCFC;
+    display: table-cell;
+    border-top: 5px #6B7EFE solid;
+}
+
+.table-header {
+    background: #E1E2DC;
+    color: #000;
+    line-height: 3.0em;
+}
+
+.td-align-center {
+    text-align: center;
+}
+
+.td-align-right {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
+
+.green-btn {
+    background: #07D329;
+    margin: 10px 0px;
+    padding: 10px;
+    font-size: 12px;
+    width: 100px;
+    text-align: center;
+}
+
+    .green-btn a:link, .green-btn a:visited {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .green-btn:hover {
+        background-color: #0AF431;
+    }
+
+#content {
+    border-radius: 3px;
+    padding: 9px 12px;
+    overflow: auto;
+}
+
+.display-label {
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    background: #009FE4;
+    line-height: 2em;
+    text-align: center;
+}
+
+.display-field {
+    font-size: 12px;
+    line-height: 3em;
+    background: #fff;
+}
+
+.td-parent {
+    font-size: 14px;
+}
+
+.td-contains-icon {
+    padding: 0 !important;
+    line-height: 2;
+}
+
+.td-list-icon {
+    text-align: center;
+    font-size: 16px;
+    background-color: #1EC279;
+    color: #fff;
+}
+
+.td-new-icon {
+    text-align: center;
+    font-size: 16px;
+    background-color: #656E64;
+    color: #fff;
+}
+
+.fa-sign-out {
+    color: rgb(250, 65, 65);
+    font-size: 15px;
+}
+
+.green {
+    color: rgb(15, 244, 0);
+}
+
+
+.pad2 {
+    padding: 0 2px;
+    font-size: 15px;
+}
+
+div.jtable-main-container {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 12px !important;
+}
+
+    div.jtable-main-container > div.jtable-title {
+        padding-left: 10px;
+    }
+
+        div.jtable-main-container > div.jtable-title div.jtable-toolbar span.jtable-toolbar-item {
+            background-color: #1EC279 !important;
+        }
+
+            div.jtable-main-container > div.jtable-title div.jtable-toolbar span.jtable-toolbar-item:hover {
+                background-color: #1EC279 !important;
+            }
+
+.jtable {
+    font-size: 10px;
+}
+
+.jtable-input-readonly {
+    background-color: lightgray;
+}
+
+.ui-corner-all {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.ui-widget {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+
+.ui-widget-header {
+    border: none !important;
+    color: #FFFEFE !important;
+    background: #1EC279 !important;
+    font-weight: normal !important;
+}
+
+div.jtable-main-container > div.jtable-title {
+    background-color: #0E5C8B !important;
+}
+
+    div.jtable-main-container > div.jtable-title div.jtable-title-text {
+        font-weight: 300;
+        font-size: 15px !important;
+        line-height: 30px !important;
+        color: #FFF;
+    }
+
+.jtable-column-header-container {
+    font-size: 13px !important;
+}
+
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin: .5em .4em .5em 0;
+    cursor: pointer;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #1EC279 !important;
+    font-weight: inherit !important;
+    border: none !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-hover {
+    background: #1EC279 !important;
+    font-weight: inherit !important;
+    border: none !important;
+    color: #fff !important;
+}
+
+.ui-button-icon-primary ui-icon ui-icon-closethick {
+    background: none !important;
+    background-color: none !important;
+}
+
+.ui-dialog .ui-dialog-content{overflow:inherit !important;}
+.formError{position:absolute !important;}
+.ui-dialog .formError { z-index: 5000 !important;}
+.ui-dialog .formError .formErrorContent { z-index: 5001; }
+.ui-dialog .formError .formErrorArrow { z-index: 5002; }
