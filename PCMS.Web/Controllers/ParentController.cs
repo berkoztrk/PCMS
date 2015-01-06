@@ -12,7 +12,7 @@ namespace PCMS.Web.Controllers
     {
         protected UnitOfWork uow;
         protected EntityService<TEntity> _service { get; set; }
- 
+
         protected ParentController()
         {
             this.uow = new UnitOfWork();
@@ -25,6 +25,7 @@ namespace PCMS.Web.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public virtual JsonResult List(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
@@ -39,6 +40,7 @@ namespace PCMS.Web.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
         [HttpPost]
         public virtual JsonResult Update(TEntity entity)
         {
@@ -62,6 +64,7 @@ namespace PCMS.Web.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
         [HttpPost]
         public virtual JsonResult Delete(TKey id)
         {
@@ -75,6 +78,7 @@ namespace PCMS.Web.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
         [HttpPost]
         public virtual JsonResult Create(TEntity entity)
         {
