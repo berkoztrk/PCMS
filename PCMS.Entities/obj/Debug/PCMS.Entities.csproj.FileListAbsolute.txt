@@ -7,3 +7,4 @@ C:\Users\berk\Desktop\PCMS\PCMS.Entities\bin\Debug\EntityFramework.xml
 C:\Users\berk\Desktop\PCMS\PCMS.Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\berk\Desktop\PCMS\PCMS.Entities\obj\Debug\PCMS.Entities.dll
 C:\Users\berk\Desktop\PCMS\PCMS.Entities\obj\Debug\PCMS.Entities.pdb
+C:\Users\berk\Desktop\PCMS\PCMS.Entities\obj\Debug\PCMS.Entities.csprojResolveAssemblyReference.cache

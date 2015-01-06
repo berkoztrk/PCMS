@@ -1,9 +1,0 @@
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\PCMS.Test.dll
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\PCMS.Test.pdb
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\PCMS.Entities.dll
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\EntityFramework.dll
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\PCMS.Entities.pdb
-C:\Users\berk\Desktop\PCMS\PCMS.Test\bin\Debug\EntityFramework.xml
-C:\Users\berk\Desktop\PCMS\PCMS.Test\obj\Debug\PCMS.Test.csprojResolveAssemblyReference.cache
-C:\Users\berk\Desktop\PCMS\PCMS.Test\obj\Debug\PCMS.Test.dll
-C:\Users\berk\Desktop\PCMS\PCMS.Test\obj\Debug\PCMS.Test.pdb

@@ -19,6 +19,7 @@ namespace PCMS.Services
             this.repository = uow.GetRepository<TEntity>();
         }
 
+
         public virtual IEnumerable<TEntity> GetAll()
         {
             return this.repository.All();

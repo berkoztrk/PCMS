@@ -16,6 +16,7 @@ namespace PCMS.Repositories
         internal CMSEntities context;
         internal DbSet<TEntity> dbSet;
 
+
         public GenericRepository(CMSEntities context)
         {
             this.context = context;

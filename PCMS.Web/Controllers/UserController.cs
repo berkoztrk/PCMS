@@ -13,14 +13,17 @@ namespace PCMS.Web.Controllers
 {
     public class UserController : ParentController<PortalUser,Guid>
     {
-        private const string LOGIN_FAIL_PARTIAL = "LoginFailPartial";
+        private const string LOGIN_FAIL_PARTIAL_VIEW = "LoginFailPartial";
         private const string LOGIN_SUCCESS_ACTION = "Index";
         private const string LOGIN_SUCCESS_CONTROLLER = "Home";
+
+        private UserService _userService;
 
 
         public UserController():base()
         {
             base._service = new UserService(uow);
+            this._userService = new UserService(uow);
         }
 
         [HttpPost]
@@ -29,10 +32,10 @@ namespace PCMS.Web.Controllers
             string username = formCollection["username"];
             string password = formCollection["password"];
 
-            UserService userService = new UserService(uow);
-          
-            PortalUser user = userService.Login(username, password);
-            if (user != null)
+            PortalUser user = _userService.Login(username, password);
+            bool loginSuccessful = user != null;
+
+            if (loginSuccessful)
             {
                 Session["CurrentUser"] = user;
                 Session["CurrentUserName"] = user.Username;
@@ -40,7 +43,7 @@ namespace PCMS.Web.Controllers
             }
             else
             {
-                return PartialView(LOGIN_FAIL_PARTIAL);
+                return PartialView(LOGIN_FAIL_PARTIAL_VIEW);
             }
         }
 
